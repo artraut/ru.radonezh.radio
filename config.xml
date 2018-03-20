@@ -75,5 +75,6 @@
         <access origin="*" />
 
         <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
+        <gap:plugin name="nl.kingsquare.background-audio" />
 
 </widget>
