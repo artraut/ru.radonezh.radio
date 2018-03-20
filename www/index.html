@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Required meta tags-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <!-- Color theme for statusbar -->
+        <meta name="theme-color" content="#2196f3">
+        <!-- Your app title -->
+        <title>Радио «Радонеж»</title>
+        <!-- For iOS theme only -->
+        <link rel="stylesheet" href="css/framework7.ios.min.css">
+        <!-- Icons -->
+        <link rel="stylesheet" href="css/framework7-icons.css">
+        <!-- Path to your custom app styles-->
+        <link rel="stylesheet" href="css/app.css">
+    </head>
+<body>
+    <!-- App root element -->
+    <div id="app">
+        <!-- Statusbar overlay -->
+        <div class="statusbar"></div>
+
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Initial Page, "data-name" contains page name -->
+            <div class="page">
+
+                        <!-- Top Navbar -->
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <div class="title home-page"></div>
+                            </div>
+                        </div>
+
+                        <div class="toolbar tabbar tabbar-labels">
+                            <div class="toolbar-inner">
+
+                                <a href="#radio" class="tab-link tab-link-active">
+                                    <!-- Different icons for iOS and MD themes -->
+                                    <i class="icon f7-icons">tune</i>
+                                    <i class="icon f7-icons active">tune_fill</i>
+                                    <!-- Label text -->
+                                    <span class="tabbar-label">Радио</span>
+                                </a>
+
+                                <a href="#help" class="tab-link">
+                                    <!-- Different icons for iOS and MD themes -->
+                                    <i class="icon f7-icons">money_rubl</i>
+                                    <i class="icon f7-icons active">money_rubl_fill</i>
+                                    <!-- Label text -->
+                                    <span class="tabbar-label">Помощь</span>
+                                </a>
+
+                                <a href="#more" class="tab-link">
+                                    <!-- Different icons for iOS and MD themes -->
+                                    <i class="icon f7-icons">more_round</i>
+                                    <i class="icon f7-icons active">more_round_fill</i>
+                                    <!-- Label text -->
+                                    <span class="tabbar-label">Ещё</span>
+                                </a>
+
+                            </div>
+                        </div>
+                                    
+
+                        <div class="tabs-swipeable-wrap">
+                            <div class="tabs">
+
+                                <div id="radio" class="page-content tab tab-active ptr-content">
+                                    <div class="ptr-preloader">
+                                        <div class="preloader"></div>
+                                        <div class="ptr-arrow"></div>
+                                    </div>
+                                    <div class="r-block r-play">
+                                        <div class="r-play-button">
+                                            <div class="r-play-button-play">
+                                                <i class="icon f7-icons">play_fill</i>
+                                            </div>
+                                            <div class="r-play-button-pause">
+                                                <i class="icon f7-icons">pause_fill</i>
+                                            </div>
+                                            <div class="r-play-button-loading">
+                                                <div class="preloader color-white"></div>
+                                            </div>
+                                        </div>
+                                        <div class="r-block-title">Сейчас в эфире</div>
+                                        <p class="r-block-body" id="playing-now"></p>
+                                        <div class="r-block-progress">
+                                            <div class="r-block-progress-loading">
+                                                <span class="progressbar"></span>
+                                            </div>
+                                            <div class="r-block-progress-playback">
+                                                <span class="progressbar-infinite"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="r-block r-next">
+                                        <div class="r-next-button">
+                                            <i class="icon f7-icons">fastforward_fill</i>
+                                        </div>
+                                        <div class="r-block-title">Далее</div>
+                                        <p class="r-block-body" id="playing-next"></p>
+                                    </div>
+                                </div>
+
+                                <div id="help" class="page-content tab">
+                                    <div class="r-block">
+                                        <div class="r-block-title">Помощь</div>
+                                        <p class="r-block-body">Дорогие братья и сестры! Радио и газета Радонеж существуют только благодаря вашей поддержке!</p>
+                                        <div class="list no-hairlines-md">
+                                            <form id="donation">
+                                                <ul>
+                                                    <li class="item-content item-input">
+                                                        <div class="item-inner">
+                                                            <div class="item-input-wrap">
+                                                                <input type="number" placeholder="Введите сумму в рублях" name="sum" />
+                                                                <span class="input-clear-button"></span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </form>
+                                        </div>
+                                        <div class="button-wrapper">
+                                            <button type="button" class="button button-help" id="donate">Помочь</button>
+                                        </div>
+                                        <div class="images">
+                                            <div class="row">
+                                                <div class="col-25">
+                                                    <div class="img-card"></div>
+                                                </div>
+                                                <div class="col-25">
+                                                    <div class="img-card"></div>
+                                                </div>
+                                                <div class="col-25">
+                                                    <div class="img-card"></div>
+                                                </div>
+                                                <div class="col-25">
+                                                    <div class="img-card"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="more" class="page-content tab">
+                                    <div class="r-block">
+                                        <span class="list links-list">
+                                            <ul>
+                                                <li>
+                                                    <a href="#" onclick="window.plugins.socialsharing.share('Message only')" class="item-content">
+                                                        <span class="item-inner">
+                                                            <span class="item-before"><i class="icon f7-icons">share</i></span>
+                                                            <span class="item-before"><i class="icon f7-icons color-red active">share_fill</i></span>
+                                                            <span class="item-title">&nbsp;&nbsp;Поделиться</span>
+                                                            <span class="item-after"></span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" onclick="window.open('http://radonezh.ru', '_system')" class="item-content external">
+                                                        <span class="item-inner">
+                                                            <span class="item-before"><i class="icon f7-icons">world</i></span>
+                                                            <span class="item-before"><i class="icon f7-icons color-red active">world_fill</i></span>
+                                                            <span class="item-title">&nbsp;&nbsp;Перейти на сайт</span>
+                                                            <span class="item-after"></span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/settings/" class="item-content">
+                                                        <span class="item-inner">
+                                                            <span class="item-before"><i class="icon f7-icons">settings</i></span>
+                                                            <span class="item-before"><i class="icon f7-icons color-red active">settings_fill</i></span>
+                                                            <span class="item-title">&nbsp;&nbsp;Настройки</span>
+                                                            <span class="item-after"></span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/about/" class="item-content">
+                                                        <span class="item-inner">
+                                                            <span class="item-before"><i class="icon f7-icons">info</i></span>
+                                                            <span class="item-before"><i class="icon f7-icons color-red active">info_fill</i></span>
+                                                            <span class="item-title">&nbsp;&nbsp;О приложении</span>
+                                                            <span class="item-after"></span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+            </div>
+        <!-- / Your main view, should have "view-main" class -->
+        </div>
+    <!-- / App root element -->    
+    </div>
+
+    <!-- Cordova js -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Path to md5 js-->
+    <script type="text/javascript" src="js/md5.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>

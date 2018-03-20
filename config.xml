@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns       = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "ru.radonezh"
+        version     = "2.0.0" >
+
+        <name>
+            Радонеж
+        </name>
+
+        <description>
+            Первая независимая радиостанция «Радонеж» не нуждается в представлении. Это не только православное средство массовой информации, но и голос Русской Православной Церкви, как в России, так и за её пределами.
+        </description>
+
+        <author href="https://artraut.com" email="info@artraut.com">
+            ООО «Арт Раут»
+        </author>
+
+        <content src="index.html" />
+
+        <access origin="*" />
+
+        <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
+
+</widget>
