@@ -75,6 +75,6 @@
         <access origin="*" />
 
         <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
-        <gap:plugin name="cordova-allow-background-audio" source="npm" />
+        <plugin spec="https://github.com/hutber/cordova-plugin-backgroundaudio.git" source="git" />
 
 </widget>
