@@ -74,41 +74,7 @@ var mainView = app.views.create('.view-main');
 var keypad = app.keypad.create({
     inputEl: '#sum',
     dotButton: false,
-    toolbarCloseText: 'Готово',
-    buttons: [
-        {
-            html:'2',
-            value: 2
-        },
-        {
-            html:'3',
-            value: 3
-        },
-        {
-            html:'4',
-            value: 4
-        },
-        {
-            html:'5',
-            value: 5
-        },
-        {
-            html:'6',
-            value: 6
-        },
-        {
-            html:'7',
-            value: 7
-        },
-        {
-            html:'8',
-            value: 8
-        },
-        {
-            html:'9',
-            value: 9
-        }
-    ]        
+    toolbarCloseText: 'Готово'       
 });
 
 // Ask Radonezh for playlists
