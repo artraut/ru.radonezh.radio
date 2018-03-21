@@ -257,6 +257,11 @@ p a.external {
 .ios .list input[type=number] {
     text-align: center;
 }
+
+.ios .keypad-button-letters {
+    display: none;
+}
+
 .ios .button-wrapper {
     padding: 16px;
 }
