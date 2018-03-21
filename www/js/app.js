@@ -15,6 +15,10 @@ var $$ = Dom7;
 
 // install Keypad plugin to Framework7
 Framework7.use(Framework7Keypad);
+app.keypad.create({
+  inputEl: '#sum',
+  dotButton: false
+});
 
 var app = new Framework7({
     // App Theme
