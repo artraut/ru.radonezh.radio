@@ -76,14 +76,6 @@ var keypad = app.keypad.create({
     dotButton: false,
     toolbarCloseText: 'Готово'       
 });
-$$('#sum').on('input', function() {
-    var sum = parseFloat(this.value);
-    if (sum > 0) {
-        $$('#donate').prop('disabled', true);
-    } else {
-        $$('#donate').prop('disabled', false);
-    }
-});
 
 // Ask Radonezh for playlists
 var getData = function () {
@@ -181,7 +173,11 @@ $$('.ptr-content').on('ptr:refresh', function () {
 $$('#donate').on('click', function(){
     var json = app.form.convertToData('#donation');
     var product_price = json.sum;
-    var sign = md5(product_id + "-" + product_price + secret);
-    var donateUrl = host + "?product_id=" + product_id + "&product_price=" + product_price + "&sign=" + sign;
-    window.open(donateUrl, '_system')
+    if (parseInt(product_price) > 0) {
+        var sign = md5(product_id + "-" + product_price + secret);
+        var donateUrl = host + "?product_id=" + product_id + "&product_price=" + product_price + "&sign=" + sign;
+        window.open(donateUrl, '_system')
+    } else {
+        keypad.open();
+    }
 });

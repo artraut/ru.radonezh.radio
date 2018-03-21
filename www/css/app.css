@@ -261,6 +261,9 @@ p a.external {
 .ios .keypad-button-letters {
     display: none;
 }
+.ios .link.sheet-close.popover-close {
+    color: #4caf50;
+}
 
 .ios .button-wrapper {
     padding: 16px;
