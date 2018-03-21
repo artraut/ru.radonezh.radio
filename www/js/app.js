@@ -13,6 +13,9 @@ if (getBitrate === null) {
 
 var $$ = Dom7;
 
+// install Keypad plugin to Framework7
+Framework7.use(Framework7Keypad);
+
 var app = new Framework7({
     // App Theme
     theme: 'ios',
