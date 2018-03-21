@@ -16,12 +16,6 @@ var $$ = Dom7;
 // install Keypad plugin to Framework7
 Framework7.use(Framework7Keypad);
 
-//var keypad = $$('.keypad-inline')[0].f7Keypad;
-// var keypad = app.keypad.create({
-//   inputEl: '#sum',
-//   dotButton: false
-// });
-
 var app = new Framework7({
     // App Theme
     theme: 'ios',
@@ -73,8 +67,17 @@ var app = new Framework7({
     ]
 });
   
+// Create main view
 var mainView = app.views.create('.view-main');
 
+// Numeric keypad settings
+var keypad = app.keypad.create({
+    inputEl: '#sum',
+    dotButton: false,
+    toolbarCloseText: 'Готово'
+});
+
+// Ask Radonezh for playlists
 var getData = function () {
     app.request({
         url: dataURL,
@@ -157,6 +160,7 @@ $$('.r-play-button-pause').click( function() {
     audio.pause();
 });
 
+// Update Radonezh playlists data on swip down
 $$('.ptr-content').on('ptr:refresh', function () {
     setTimeout(function () {
         getData();
@@ -165,6 +169,7 @@ $$('.ptr-content').on('ptr:refresh', function () {
     }, 500);
 });
 
+// Redirect on donation page
 $$('#donate').on('click', function(){
     var json = app.form.convertToData('#donation');
     var product_price = json.sum;
