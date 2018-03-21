@@ -76,6 +76,14 @@ var keypad = app.keypad.create({
     dotButton: false,
     toolbarCloseText: 'Готово'       
 });
+$$('#sum').on('input', function() {
+    var sum = parseFloat(this.value);
+    if (sum > 0) {
+        $$('#donate').prop('disabled', true);
+    } else {
+        $$('#donate').prop('disabled', false);
+    }
+});
 
 // Ask Radonezh for playlists
 var getData = function () {
