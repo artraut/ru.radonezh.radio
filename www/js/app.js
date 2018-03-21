@@ -173,7 +173,6 @@ $$('.ptr-content').on('ptr:refresh', function () {
 $$('#donate').on('click', function(){
     var json = app.form.convertToData('#donation');
     var product_price = json.sum;
-    console.log(product_price);
     var sign = md5(product_id + "-" + product_price + secret);
     var donateUrl = host + "?product_id=" + product_id + "&product_price=" + product_price + "&sign=" + sign;
     window.open(donateUrl, '_system')
