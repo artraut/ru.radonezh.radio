@@ -15,7 +15,9 @@ var $$ = Dom7;
 
 // install Keypad plugin to Framework7
 Framework7.use(Framework7Keypad);
-app.keypad.create({
+
+//var keypad = $$('.keypad-inline')[0].f7Keypad;
+var keypad = app.keypad.create({
   inputEl: '#sum',
   dotButton: false
 });
