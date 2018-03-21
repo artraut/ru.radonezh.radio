@@ -17,10 +17,10 @@ var $$ = Dom7;
 Framework7.use(Framework7Keypad);
 
 //var keypad = $$('.keypad-inline')[0].f7Keypad;
-var keypad = app.keypad.create({
-  inputEl: '#sum',
-  dotButton: false
-});
+// var keypad = app.keypad.create({
+//   inputEl: '#sum',
+//   dotButton: false
+// });
 
 var app = new Framework7({
     // App Theme
