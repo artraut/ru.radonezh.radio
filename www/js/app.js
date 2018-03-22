@@ -100,6 +100,7 @@ var getData = function () {
 document.addEventListener("online", onOnline, false);
 document.addEventListener("offline", onOffline, false);
 
+var isPlaying = false;
 var networkError = false;
 
 function onOnline() {
@@ -121,6 +122,7 @@ function onOnline() {
         $$('.r-play-button-loading').hide();
         $$('.r-block-progress-playback').show();
         $$('.r-block-progress-loading').hide();
+        isPlaying = true;
     }
 
     audio.onpause = function () {
@@ -129,6 +131,7 @@ function onOnline() {
         $$('.r-play-button-loading').hide();
         $$('.r-block-progress-playback').hide();
         $$('.r-block-progress-loading').show();
+        isPlaying = false;
     }
 
     audio.onwaiting = function () {
@@ -147,7 +150,8 @@ function onOnline() {
         audio.pause();
     });
     
-    if (networkError == true) {
+    if (networkError == true && isPlaying = true) {
+        app.dialog.destroy();
         app.dialog.create({
             text: 'Подключение к сети восстановлено, возобновить вещание?',
             buttonOk: 'Да',
