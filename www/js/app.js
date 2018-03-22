@@ -147,8 +147,12 @@ function onOnline() {
         audio.pause();
     });
     
-    if networkError {
-        app.dialog.confirm('Подключение к сети восстановлено', audio.play());
+    if (networkError == true) {
+        app.dialog.create({
+            text: 'Подключение к сети восстановлено, возобновить вещание?',
+            buttonOk: 'Да',
+            buttonCancel: 'Нет',
+        }, audio.play());
         networkError = false;
     }
     
