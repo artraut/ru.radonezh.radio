@@ -107,13 +107,11 @@ function onOnline() {
     var streamURL = localStorage.getItem("bitrate");
     var audio = new Audio(streamURL);
     
-    audio.oncanplay = function () {
-        $$('.r-play-button-play').show();
-        $$('.r-play-button-pause').hide();
-        $$('.r-play-button-loading').hide();
-        $$('.r-block-progress-playback').hide();
-        $$('.r-block-progress-loading').show();
-    }
+    $$('.r-play-button-play').show();
+    $$('.r-play-button-pause').hide();
+    $$('.r-play-button-loading').hide();
+    $$('.r-block-progress-playback').hide();
+    $$('.r-block-progress-loading').show();
 
     audio.onplaying = function () {
         $$('.r-play-button-play').hide();
