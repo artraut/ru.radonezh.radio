@@ -102,6 +102,13 @@ document.addEventListener("offline", onOffline, false);
 
 var isPlaying = false;
 var networkError = false;
+var alert = app.dialog.alert('Подключение к сети отсутствует');
+var confirm = app.dialog.create({
+                    text: 'Подключение к сети восстановлено, возобновить вещание?',
+                    buttonOk: 'Да',
+                    buttonCancel: 'Нет',
+                }, audio.play());
+
 
 function onOnline() {
     
@@ -150,15 +157,11 @@ function onOnline() {
         audio.pause();
     });
     
-//     if (networkError == true && isPlaying == true) {
-//         app.dialog.destroy();
-//         app.dialog.create({
-//             text: 'Подключение к сети восстановлено, возобновить вещание?',
-//             buttonOk: 'Да',
-//             buttonCancel: 'Нет',
-//         }, audio.play());
-//         networkError = false;
-//     }
+    if (networkError == true && isPlaying == true) {
+        alert.close();
+        confirm.open();
+        networkError = false;
+    }
     
 }
 function onOffline() {
@@ -168,7 +171,7 @@ function onOffline() {
     $$('.r-play-button-loading').show();
     $$('.r-block-progress-playback').hide();
     $$('.r-block-progress-loading').show();
-    //app.dialog.alert('Подключение к сети отсутствует');
+    alert.open();
 } 
 
 // Update Radonezh playlists data on swip down
