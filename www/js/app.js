@@ -95,14 +95,16 @@ var getData = function () {
         }
     });
 }
-getData();
-
 
 // Stream Player
 document.addEventListener("online", onOnline, false);
 document.addEventListener("offline", onOffline, false);
 
+var networkError = false;
+
 function onOnline() {
+    
+    getData();
     
     var streamURL = localStorage.getItem("bitrate");
     var audio = new Audio(streamURL);
@@ -145,73 +147,21 @@ function onOnline() {
         audio.pause();
     });
     
+    if networkError {
+        app.dialog.confirm('Подключение к сети восстановлено', audio.play());
+        networkError = false;
+    }
+    
 }
 function onOffline() {
+    networkError = true;
     $$('.r-play-button-play').hide();
     $$('.r-play-button-pause').hide();
     $$('.r-play-button-loading').show();
     $$('.r-block-progress-playback').hide();
     $$('.r-block-progress-loading').show();
+    app.dialog.alert('Подключение к сети отсутствует');
 } 
-
-// var streamURL = localStorage.getItem("bitrate");
-// var audio = new Audio(streamURL);
-// var playing = false;
-
-// audio.oncanplay = function () {
-//     $$('.r-play-button-play').show();
-//     $$('.r-play-button-pause').hide();
-//     $$('.r-play-button-loading').hide();
-//     $$('.r-block-progress-playback').hide();
-//     $$('.r-block-progress-loading').show();
-// }
-
-// audio.onplaying = function () {
-//     $$('.r-play-button-play').hide();
-//     $$('.r-play-button-pause').show();
-//     $$('.r-play-button-loading').hide();
-//     $$('.r-block-progress-playback').show();
-//     $$('.r-block-progress-loading').hide();
-//     playing = true;
-// }
-
-// audio.onpause = function () {
-//     $$('.r-play-button-play').show();
-//     $$('.r-play-button-pause').hide();
-//     $$('.r-play-button-loading').hide();
-//     $$('.r-block-progress-playback').hide();
-//     $$('.r-block-progress-loading').show();
-//     playing = false;
-// }
-
-// audio.onwaiting = function () {
-//     $$('.r-play-button-play').hide();
-//     $$('.r-play-button-pause').hide();
-//     $$('.r-play-button-loading').show();
-//     $$('.r-block-progress-playback').hide();
-//     $$('.r-block-progress-loading').show();
-// }
-
-// audio.onerror = function () {
-//     $$('.r-play-button-play').hide();
-//     $$('.r-play-button-pause').hide();
-//     $$('.r-play-button-loading').show();
-//     $$('.r-block-progress-playback').hide();
-//     $$('.r-block-progress-loading').show();
-//     audio.stop();
-//     audio.load();
-//     if (playing == true) {
-//         audio.play();
-//     }
-// }
-
-// $$('.r-play-button-play').click( function() {
-//     audio.play();
-// });
-
-// $$('.r-play-button-pause').click( function() {
-//     audio.pause();
-// });
 
 // Update Radonezh playlists data on swip down
 $$('.ptr-content').on('ptr:refresh', function () {
