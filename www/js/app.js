@@ -97,68 +97,87 @@ var getData = function () {
 }
 getData();
 
+
 // Stream Player
+document.addEventListener("online", onOnline, false);
+document.addEventListener("offline", onOffline, false);
 
-var streamURL = localStorage.getItem("bitrate");
-var audio = new Audio(streamURL);
-var playing = false;
-
-$$('.r-play-button-play').show();
-
-audio.oncanplay = function () {
+function onOnline() {
     $$('.r-play-button-play').show();
     $$('.r-play-button-pause').hide();
     $$('.r-play-button-loading').hide();
     $$('.r-block-progress-playback').hide();
     $$('.r-block-progress-loading').show();
 }
-
-audio.onplaying = function () {
-    $$('.r-play-button-play').hide();
-    $$('.r-play-button-pause').show();
-    $$('.r-play-button-loading').hide();
-    $$('.r-block-progress-playback').show();
-    $$('.r-block-progress-loading').hide();
-    playing = true;
-}
-
-audio.onpause = function () {
-    $$('.r-play-button-play').show();
-    $$('.r-play-button-pause').hide();
-    $$('.r-play-button-loading').hide();
-    $$('.r-block-progress-playback').hide();
-    $$('.r-block-progress-loading').show();
-    playing = false;
-}
-
-audio.onwaiting = function () {
+function onOffline() {
     $$('.r-play-button-play').hide();
     $$('.r-play-button-pause').hide();
     $$('.r-play-button-loading').show();
     $$('.r-block-progress-playback').hide();
     $$('.r-block-progress-loading').show();
-}
+} 
 
-audio.onerror = function () {
-    $$('.r-play-button-play').hide();
-    $$('.r-play-button-pause').hide();
-    $$('.r-play-button-loading').show();
-    $$('.r-block-progress-playback').hide();
-    $$('.r-block-progress-loading').show();
-    audio.stop();
-    audio.load();
-    if (playing == true) {
-        audio.play();
-    }
-}
 
-$$('.r-play-button-play').click( function() {
-    audio.play();
-});
+// var streamURL = localStorage.getItem("bitrate");
+// var audio = new Audio(streamURL);
+// var playing = false;
 
-$$('.r-play-button-pause').click( function() {
-    audio.pause();
-});
+// $$('.r-play-button-play').show();
+
+// audio.oncanplay = function () {
+//     $$('.r-play-button-play').show();
+//     $$('.r-play-button-pause').hide();
+//     $$('.r-play-button-loading').hide();
+//     $$('.r-block-progress-playback').hide();
+//     $$('.r-block-progress-loading').show();
+// }
+
+// audio.onplaying = function () {
+//     $$('.r-play-button-play').hide();
+//     $$('.r-play-button-pause').show();
+//     $$('.r-play-button-loading').hide();
+//     $$('.r-block-progress-playback').show();
+//     $$('.r-block-progress-loading').hide();
+//     playing = true;
+// }
+
+// audio.onpause = function () {
+//     $$('.r-play-button-play').show();
+//     $$('.r-play-button-pause').hide();
+//     $$('.r-play-button-loading').hide();
+//     $$('.r-block-progress-playback').hide();
+//     $$('.r-block-progress-loading').show();
+//     playing = false;
+// }
+
+// audio.onwaiting = function () {
+//     $$('.r-play-button-play').hide();
+//     $$('.r-play-button-pause').hide();
+//     $$('.r-play-button-loading').show();
+//     $$('.r-block-progress-playback').hide();
+//     $$('.r-block-progress-loading').show();
+// }
+
+// audio.onerror = function () {
+//     $$('.r-play-button-play').hide();
+//     $$('.r-play-button-pause').hide();
+//     $$('.r-play-button-loading').show();
+//     $$('.r-block-progress-playback').hide();
+//     $$('.r-block-progress-loading').show();
+//     audio.stop();
+//     audio.load();
+//     if (playing == true) {
+//         audio.play();
+//     }
+// }
+
+// $$('.r-play-button-play').click( function() {
+//     audio.play();
+// });
+
+// $$('.r-play-button-pause').click( function() {
+//     audio.pause();
+// });
 
 // Update Radonezh playlists data on swip down
 $$('.ptr-content').on('ptr:refresh', function () {
