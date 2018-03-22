@@ -53,7 +53,7 @@ var app = new Framework7({
                         localStorage.setItem("bitrate",this.value);
                             audio.stop();
                             audio.load();
-                            if (playing == true) {
+                            if (isPlaying == true) {
                                 audio.play();
                             }
                         }
@@ -142,15 +142,15 @@ function onOnline() {
         $$('.r-block-progress-loading').show();
     }
     
-    $$('.r-play-button-play').click( function() {
+    $$('.r-play-button-play').click( function () {
         audio.play();
     });
 
-    $$('.r-play-button-pause').click( function() {
+    $$('.r-play-button-pause').click( function () {
         audio.pause();
     });
     
-    if (networkError == true && isPlaying = true) {
+    if (networkError == true && isPlaying == true) {
         app.dialog.destroy();
         app.dialog.create({
             text: 'Подключение к сети восстановлено, возобновить вещание?',
