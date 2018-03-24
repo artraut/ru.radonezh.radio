@@ -76,5 +76,6 @@
 
         <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
         <plugin spec="https://github.com/hutber/cordova-plugin-backgroundaudio.git" source="git" />
+        <plugin name="cordova-plugin-network-information" spec="~2.0.1" />
 
 </widget>

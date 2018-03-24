@@ -24,7 +24,7 @@ var app = new Framework7({
     // App Name
     name: 'Радио «Радонеж»',
     // App id
-    id: 'ru.radonezh.radio',
+    id: 'ru.radonezh',
     // Enable swipe panel
     panel: {
         swipe: 'left',
@@ -53,7 +53,7 @@ var app = new Framework7({
                         localStorage.setItem("bitrate",this.value);
                             audio.stop();
                             audio.load();
-                            if (playing == true) {
+                            if (isPlaying == true) {
                                 audio.play();
                             }
                         }
@@ -95,70 +95,76 @@ var getData = function () {
         }
     });
 }
-getData();
 
 // Stream Player
+document.addEventListener("online", onOnline, false);
+document.addEventListener("offline", onOffline, false);
 
-var streamURL = localStorage.getItem("bitrate");
-var audio = new Audio(streamURL);
-var playing = false;
+var isPlaying = false;
+var networkError = false;
 
-$$('.r-play-button-play').show();
-
-audio.oncanplay = function () {
+function onOnline() {
+    
+    getData();
+    
+    var streamURL = localStorage.getItem("bitrate");
+    var audio = new Audio(streamURL);
+    
     $$('.r-play-button-play').show();
     $$('.r-play-button-pause').hide();
     $$('.r-play-button-loading').hide();
     $$('.r-block-progress-playback').hide();
     $$('.r-block-progress-loading').show();
-}
 
-audio.onplaying = function () {
-    $$('.r-play-button-play').hide();
-    $$('.r-play-button-pause').show();
-    $$('.r-play-button-loading').hide();
-    $$('.r-block-progress-playback').show();
-    $$('.r-block-progress-loading').hide();
-    playing = true;
-}
-
-audio.onpause = function () {
-    $$('.r-play-button-play').show();
-    $$('.r-play-button-pause').hide();
-    $$('.r-play-button-loading').hide();
-    $$('.r-block-progress-playback').hide();
-    $$('.r-block-progress-loading').show();
-    playing = false;
-}
-
-audio.onwaiting = function () {
-    $$('.r-play-button-play').hide();
-    $$('.r-play-button-pause').hide();
-    $$('.r-play-button-loading').show();
-    $$('.r-block-progress-playback').hide();
-    $$('.r-block-progress-loading').show();
-}
-
-audio.onerror = function () {
-    $$('.r-play-button-play').hide();
-    $$('.r-play-button-pause').hide();
-    $$('.r-play-button-loading').show();
-    $$('.r-block-progress-playback').hide();
-    $$('.r-block-progress-loading').show();
-    audio.stop();
-    audio.load();
-    if (playing == true) {
-        audio.play();
+    audio.onplaying = function () {
+        $$('.r-play-button-play').hide();
+        $$('.r-play-button-pause').show();
+        $$('.r-play-button-loading').hide();
+        $$('.r-block-progress-playback').show();
+        $$('.r-block-progress-loading').hide();
+        isPlaying = true;
     }
+
+    audio.onpause = function () {
+        $$('.r-play-button-play').show();
+        $$('.r-play-button-pause').hide();
+        $$('.r-play-button-loading').hide();
+        $$('.r-block-progress-playback').hide();
+        $$('.r-block-progress-loading').show();
+        isPlaying = false;
+    }
+
+    audio.onwaiting = function () {
+        $$('.r-play-button-play').hide();
+        $$('.r-play-button-pause').hide();
+        $$('.r-play-button-loading').show();
+        $$('.r-block-progress-playback').hide();
+        $$('.r-block-progress-loading').show();
+    }
+    
+    $$('.r-play-button-play').click( function () {
+        audio.play();
+    });
+
+    $$('.r-play-button-pause').click( function () {
+        audio.pause();
+    });
+    
+    if (networkError == true && isPlaying == true) {
+        audio.play();
+        networkError = false;
+    }
+    
 }
-
-$$('.r-play-button-play').click( function() {
-    audio.play();
-});
-
-$$('.r-play-button-pause').click( function() {
-    audio.pause();
-});
+function onOffline() {
+    networkError = true;
+    $$('.r-play-button-play').hide();
+    $$('.r-play-button-pause').hide();
+    $$('.r-play-button-loading').show();
+    $$('.r-block-progress-playback').hide();
+    $$('.r-block-progress-loading').show();
+    app.dialog.alert('Проверьте подключение к сети');
+} 
 
 // Update Radonezh playlists data on swip down
 $$('.ptr-content').on('ptr:refresh', function () {
