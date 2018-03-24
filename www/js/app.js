@@ -1,6 +1,6 @@
-var dataURL = "https://apps.radonezh.ru/";
+var dataURL = "http://apps.radonezh.ru/";
 var update = 60000;
-var host = "ttps://payments.chronopay.ru/";
+var host = "https://payments.chronopay.ru/";
 var product_id = "006009-0001-0001";
 var secret = "-FQ1I7T3GGv62KdYc";
 
