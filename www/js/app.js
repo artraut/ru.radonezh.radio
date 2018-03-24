@@ -102,13 +102,6 @@ document.addEventListener("offline", onOffline, false);
 
 var isPlaying = false;
 var networkError = false;
-// var alert = app.dialog.alert('Подключение к сети отсутствует');
-// var confirm = app.dialog.create({
-//                     text: 'Подключение к сети восстановлено, возобновить вещание?',
-//                     buttonOk: 'Да',
-//                     buttonCancel: 'Нет',
-//                 }, audio.play());
-
 
 function onOnline() {
     
