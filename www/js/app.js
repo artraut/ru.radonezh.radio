@@ -130,7 +130,7 @@ function onOnline() {
         audio.pause();
     });
 
-    if (networkError === true && localStorage.getItem("isPlaying") === "n") {
+    if (networkError === true && localStorage.getItem("isPlaying") == "n") {
         audio.play();
         networkError = false;
     }
@@ -169,7 +169,7 @@ function loadingView() {
 function init() {
     var isPlaying = localStorage.getItem("isPlaying");
     var streamURL = localStorage.getItem("bitrate");
-    if (isPlaying === "n") {
+    if (isPlaying == "n") {
         pauseView();
         audio = new Audio(streamURL);
     } else {
