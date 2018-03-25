@@ -120,6 +120,7 @@ function onOnline() {
         $$('.r-play-button-loading').hide();
         $$('.r-block-progress-playback').show();
         $$('.r-block-progress-loading').hide();
+        audio.play();
     }
 
 
