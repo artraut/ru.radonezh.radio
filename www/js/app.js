@@ -51,6 +51,8 @@ var app = new Framework7({
                     });
                     $$('[name="bitrate"]').on("change", function () {
                         localStorage.setItem("bitrate", this.value);
+                        audio.pause();
+                        audio.stop();
                         audio = null;
                         // if (isPlaying == true) {
                         //     onOnline();
