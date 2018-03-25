@@ -129,8 +129,7 @@ function onOnline() {
         $$('.r-play-button-loading').hide();
         $$('.r-block-progress-playback').hide();
         $$('.r-block-progress-loading').show();
-        isPlaying = false;
-        audio = null;
+        reloadAudio();
     }
 
     audio.onwaiting = function () {
@@ -149,6 +148,8 @@ function onOnline() {
     $$('.r-play-button-pause').click( function () {
         audio.pause();
     });
+
+
 
     // audio.onerror = function () {
     //     audio.pause();
@@ -173,6 +174,11 @@ function onOffline() {
     $$('.r-block-progress-playback').hide();
     $$('.r-block-progress-loading').show();
     app.dialog.alert('Проверьте подключение к сети');
+}
+
+function reloadAudio() {
+    var streamURL = localStorage.getItem("bitrate");
+    audio = new Audio(streamURL);
 }
 
 
