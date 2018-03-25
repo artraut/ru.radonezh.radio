@@ -51,12 +51,7 @@ var app = new Framework7({
                     });
                     $$('[name="bitrate"]').on("change", function () {
                         localStorage.setItem("bitrate", this.value);
-                        audio = null;
-                        // var streamURL = localStorage.getItem("bitrate");
-                        // audio = new Audio(streamURL);
-                        // // audio.currentTime = 0;
-                        // // audio.stop();
-                        // // audio = null;
+                        location.reload();
                         // if (isPlaying == true) {
                         //     audio.play();
                         // }
@@ -106,14 +101,12 @@ document.addEventListener("offline", onOffline, false);
 var isPlaying = false;
 var networkError = false;
 
-var audio;
-
 function onOnline() {
     
     getData();
     
     var streamURL = localStorage.getItem("bitrate");
-    audio = new Audio(streamURL);
+    var audio = new Audio(streamURL);
     
     $$('.r-play-button-play').show();
     $$('.r-play-button-pause').hide();
