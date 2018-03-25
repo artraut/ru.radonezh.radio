@@ -140,6 +140,14 @@ function onOnline() {
         $$('.r-block-progress-loading').show();
     }
 
+    $$('.r-play-button-play').click( function () {
+        audio.play();
+    });
+
+    $$('.r-play-button-pause').click( function () {
+        audio.pause();
+    });
+
     // audio.onerror = function () {
     //     audio.pause();
     // }
