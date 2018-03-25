@@ -51,11 +51,10 @@ var app = new Framework7({
                     });
                     $$('[name="bitrate"]').on("change", function () {
                         localStorage.setItem("bitrate", this.value);
-                        audio.pause();
-                        audio.currentTime = 0;
-                        if (isPlaying == true) {
-                            onOnline();
-                        }
+                        audio = null;
+                        // if (isPlaying == true) {
+                        //     onOnline();
+                        // }
                     });
                 },
                 pageInit: function (e, page) {
