@@ -141,6 +141,7 @@ function onOnline() {
     }
 
     $$('.r-play-button-play').click( function () {
+        audio.pause();
         audio.play();
     });
 
