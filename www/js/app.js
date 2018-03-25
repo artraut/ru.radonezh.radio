@@ -50,13 +50,13 @@ var app = new Framework7({
                         }
                     });
                     $$('[name="bitrate"]').on("change", function () {
-                        localStorage.setItem("bitrate",this.value);
-                            audio.pause();
-                            if (isPlaying == true) {
-                                onOnline();
-                            }
+                        localStorage.setItem("bitrate", this.value);
+                        audio.pause();
+                        audio.currentTime = 0;
+                        if (isPlaying == true) {
+                            onOnline();
                         }
-                    );
+                    });
                 },
                 pageInit: function (e, page) {
                     // do something when page initialized
