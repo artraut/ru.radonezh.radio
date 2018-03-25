@@ -103,9 +103,10 @@ var networkError = false;
 var audio;
 
 function onOnline() {
-    audio = null;
     getData();
-
+    audio.pause();
+    audio.currentTime = 0;
+    audio = null;
     var streamURL = localStorage.getItem("bitrate");
     audio = new Audio(streamURL);
 
