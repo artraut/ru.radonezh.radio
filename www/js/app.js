@@ -99,7 +99,7 @@ document.addEventListener("online", onOnline, false);
 document.addEventListener("offline", onOffline, false);
 
 var isPlaying = false;
-var networkError = false;
+//var networkError = false;
 var audio;
 
 function onOnline() {
@@ -115,11 +115,11 @@ function onOnline() {
         $$('.r-block-progress-loading').show();
         audio = new Audio(streamURL);
     } else {
-        $$('.r-play-button-play').hide();
-        $$('.r-play-button-pause').show();
-        $$('.r-play-button-loading').hide();
-        $$('.r-block-progress-playback').show();
-        $$('.r-block-progress-loading').hide();
+        // $$('.r-play-button-play').hide();
+        // $$('.r-play-button-pause').show();
+        // $$('.r-play-button-loading').hide();
+        // $$('.r-block-progress-playback').show();
+        // $$('.r-block-progress-loading').hide();
         audio.pause();
         audio.currentTime = 0;
         audio.src = null;
@@ -162,20 +162,20 @@ function onOnline() {
         audio.pause();
     });
 
-    if (networkError == true && isPlaying == true) {
-        audio.play();
-        networkError = false;
-    }
+    // if (networkError == true && isPlaying == true) {
+    //     audio.play();
+    //     networkError = false;
+    // }
     
 }
 function onOffline() {
-    networkError = true;
+    //networkError = true;
     $$('.r-play-button-play').hide();
     $$('.r-play-button-pause').hide();
     $$('.r-play-button-loading').show();
     $$('.r-block-progress-playback').hide();
     $$('.r-block-progress-loading').show();
-    app.dialog.alert('Проверьте подключение к сети');
+    //app.dialog.alert('Проверьте подключение к сети');
 }
 
 
