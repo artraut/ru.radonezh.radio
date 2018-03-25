@@ -100,13 +100,14 @@ document.addEventListener("offline", onOffline, false);
 
 var isPlaying = false;
 var networkError = false;
+var audio;
 
 function onOnline() {
-
+    audio = null;
     getData();
 
     var streamURL = localStorage.getItem("bitrate");
-    var audio = new Audio(streamURL);
+    audio = new Audio(streamURL);
 
     if (isPlaying == false) {
         $$('.r-play-button-play').show();
