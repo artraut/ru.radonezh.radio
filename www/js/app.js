@@ -106,7 +106,7 @@ function onOnline() {
     getData();
     audio.pause();
     audio.currentTime = 0;
-    audio = null;
+    audio.src = null;
     var streamURL = localStorage.getItem("bitrate");
     audio = new Audio(streamURL);
 
