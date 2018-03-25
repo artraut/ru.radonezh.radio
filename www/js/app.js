@@ -148,14 +148,6 @@ function onOnline() {
         audio.pause();
         isPlaying = false;
     }
-
-    $$('.r-play-button-play').click( function () {
-        audio.play();
-    });
-
-    $$('.r-play-button-pause').click( function () {
-        audio.pause();
-    });
     
     if (networkError == true && isPlaying == true) {
         audio.play();
