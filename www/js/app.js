@@ -139,7 +139,24 @@ function onOnline() {
         $$('.r-block-progress-playback').hide();
         $$('.r-block-progress-loading').show();
     }
-    
+
+    audio.onerror = function () {
+        $$('.r-play-button-play').hide();
+        $$('.r-play-button-pause').hide();
+        $$('.r-play-button-loading').show();
+        $$('.r-block-progress-playback').hide();
+        $$('.r-block-progress-loading').show();
+    }
+
+    audio.onended = function () {
+        $$('.r-play-button-play').show();
+        $$('.r-play-button-pause').hide();
+        $$('.r-play-button-loading').hide();
+        $$('.r-block-progress-playback').hide();
+        $$('.r-block-progress-loading').show();
+        isPlaying = false;
+    }
+
     $$('.r-play-button-play').click( function () {
         audio.play();
     });
