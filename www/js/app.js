@@ -52,9 +52,6 @@ var app = new Framework7({
                     $$('[name="bitrate"]').on("change", function () {
                         localStorage.setItem("bitrate", this.value);
                         location.reload();
-                        // if (isPlaying == true) {
-                        //     audio.play();
-                        // }
                     });
                 },
                 pageInit: function (e, page) {
@@ -103,50 +100,23 @@ var networkError = false;
 var audio;
 
 function onOnline() {
+
     getData();
-    var streamURL = localStorage.getItem("bitrate");
 
-
-    if (isPlaying == false) {
-        $$('.r-play-button-play').show();
-        $$('.r-play-button-pause').hide();
-        $$('.r-play-button-loading').hide();
-        $$('.r-block-progress-playback').hide();
-        $$('.r-block-progress-loading').show();
-        audio = new Audio(streamURL);
-    } else {
-        audio.pause();
-        audio.currentTime = 0;
-        audio.src = null;
-        audio = new Audio(streamURL);
-        audio.play();
-    }
-
+    init();
 
     audio.onplaying = function () {
-        $$('.r-play-button-play').hide();
-        $$('.r-play-button-pause').show();
-        $$('.r-play-button-loading').hide();
-        $$('.r-block-progress-playback').show();
-        $$('.r-block-progress-loading').hide();
+        playView();
         isPlaying = true;
     }
 
     audio.onpause = function () {
-        $$('.r-play-button-play').show();
-        $$('.r-play-button-pause').hide();
-        $$('.r-play-button-loading').hide();
-        $$('.r-block-progress-playback').hide();
-        $$('.r-block-progress-loading').show();
+        pauseView();
         isPlaying = false;
     }
 
     audio.onwaiting = function () {
-        $$('.r-play-button-play').hide();
-        $$('.r-play-button-pause').hide();
-        $$('.r-play-button-loading').show();
-        $$('.r-block-progress-playback').hide();
-        $$('.r-block-progress-loading').show();
+        loadingView();
     }
 
     $$('.r-play-button-play').click( function () {
@@ -165,14 +135,49 @@ function onOnline() {
 }
 function onOffline() {
     networkError = true;
+    loadingView();
+    app.dialog.alert('Проверьте подключение к сети');
+}
+
+function playView() {
+    $$('.r-play-button-play').hide();
+    $$('.r-play-button-pause').show();
+    $$('.r-play-button-loading').hide();
+    $$('.r-block-progress-playback').show();
+    $$('.r-block-progress-loading').hide();
+}
+
+function pauseView() {
+    $$('.r-play-button-play').show();
+    $$('.r-play-button-pause').hide();
+    $$('.r-play-button-loading').hide();
+    $$('.r-block-progress-playback').hide();
+    $$('.r-block-progress-loading').show();
+}
+
+function loadingView() {
     $$('.r-play-button-play').hide();
     $$('.r-play-button-pause').hide();
     $$('.r-play-button-loading').show();
     $$('.r-block-progress-playback').hide();
     $$('.r-block-progress-loading').show();
-    app.dialog.alert('Проверьте подключение к сети');
 }
 
+function init() {
+
+    var streamURL = localStorage.getItem("bitrate");
+
+    if (isPlaying == false) {
+        pauseView();
+        audio = new Audio(streamURL);
+    } else {
+        audio.pause();
+        audio.currentTime = 0;
+        audio.src = null;
+        audio = new Audio(streamURL);
+        audio.play();
+    }
+}
 
 // Update Radonezh playlists data on swip down
 $$('.ptr-content').on('ptr:refresh', function () {
