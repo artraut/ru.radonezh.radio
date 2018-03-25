@@ -52,14 +52,14 @@ var app = new Framework7({
                     $$('[name="bitrate"]').on("change", function () {
                         localStorage.setItem("bitrate", this.value);
                         audio.pause();
-                        var streamURL = localStorage.getItem("bitrate");
-                        audio = new Audio(streamURL);
-                        // audio.currentTime = 0;
-                        // audio.stop();
-                        // audio = null;
-                        if (isPlaying == true) {
-                            audio.play();
-                        }
+                        // var streamURL = localStorage.getItem("bitrate");
+                        // audio = new Audio(streamURL);
+                        // // audio.currentTime = 0;
+                        // // audio.stop();
+                        // // audio = null;
+                        // if (isPlaying == true) {
+                        //     audio.play();
+                        // }
                     });
                 },
                 pageInit: function (e, page) {
@@ -167,7 +167,8 @@ function onOffline() {
     $$('.r-block-progress-playback').hide();
     $$('.r-block-progress-loading').show();
     app.dialog.alert('Проверьте подключение к сети');
-} 
+}
+
 
 // Update Radonezh playlists data on swip down
 $$('.ptr-content').on('ptr:refresh', function () {
