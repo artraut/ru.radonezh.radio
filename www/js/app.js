@@ -157,21 +157,10 @@ function onOnline() {
         audio.pause();
     });
 
-
-
-    // audio.onerror = function () {
-    //     audio.pause();
-    // }
-    //
-    // audio.onended = function () {
-    //     audio.pause();
-    //     isPlaying = false;
-    // }
-    //
-    // if (networkError == true && isPlaying == true) {
-    //     audio.play();
-    //     networkError = false;
-    // }
+    if (networkError == true && isPlaying == true) {
+        audio.play();
+        networkError = false;
+    }
     
 }
 function onOffline() {
