@@ -106,14 +106,22 @@ function onOnline() {
     getData();
 
     var streamURL = localStorage.getItem("bitrate");
-    app.dialog.alert('в сети');
     var audio = new Audio(streamURL);
 
-    $$('.r-play-button-play').show();
-    $$('.r-play-button-pause').hide();
-    $$('.r-play-button-loading').hide();
-    $$('.r-block-progress-playback').hide();
-    $$('.r-block-progress-loading').show();
+    if (isPlaying == false) {
+        $$('.r-play-button-play').show();
+        $$('.r-play-button-pause').hide();
+        $$('.r-play-button-loading').hide();
+        $$('.r-block-progress-playback').hide();
+        $$('.r-block-progress-loading').show();
+    } else {
+        $$('.r-play-button-play').hide();
+        $$('.r-play-button-pause').show();
+        $$('.r-play-button-loading').hide();
+        $$('.r-block-progress-playback').show();
+        $$('.r-block-progress-loading').hide();
+    }
+
 
     audio.onplaying = function () {
         $$('.r-play-button-play').hide();
@@ -130,6 +138,7 @@ function onOnline() {
         $$('.r-play-button-loading').hide();
         $$('.r-block-progress-playback').hide();
         $$('.r-block-progress-loading').show();
+        isPlaying = false;
     }
 
     audio.onwaiting = function () {
