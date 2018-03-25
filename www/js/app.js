@@ -140,19 +140,19 @@ function onOnline() {
         $$('.r-block-progress-loading').show();
     }
 
-    audio.onerror = function () {
-        audio.pause();
-    }
-
-    audio.onended = function () {
-        audio.pause();
-        isPlaying = false;
-    }
-    
-    if (networkError == true && isPlaying == true) {
-        audio.play();
-        networkError = false;
-    }
+    // audio.onerror = function () {
+    //     audio.pause();
+    // }
+    //
+    // audio.onended = function () {
+    //     audio.pause();
+    //     isPlaying = false;
+    // }
+    //
+    // if (networkError == true && isPlaying == true) {
+    //     audio.play();
+    //     networkError = false;
+    // }
     
 }
 function onOffline() {
