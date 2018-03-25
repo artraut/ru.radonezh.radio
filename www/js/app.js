@@ -52,11 +52,14 @@ var app = new Framework7({
                     $$('[name="bitrate"]').on("change", function () {
                         localStorage.setItem("bitrate", this.value);
                         audio.pause();
-                        audio.stop();
-                        audio = null;
-                        // if (isPlaying == true) {
-                        //     onOnline();
-                        // }
+                        var streamURL = localStorage.getItem("bitrate");
+                        audio = new Audio(streamURL);
+                        // audio.currentTime = 0;
+                        // audio.stop();
+                        // audio = null;
+                        if (isPlaying == true) {
+                            audio.play();
+                        }
                     });
                 },
                 pageInit: function (e, page) {
