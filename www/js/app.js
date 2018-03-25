@@ -130,6 +130,7 @@ function onOnline() {
         $$('.r-block-progress-playback').hide();
         $$('.r-block-progress-loading').show();
         isPlaying = false;
+        audio = null;
     }
 
     audio.onwaiting = function () {
