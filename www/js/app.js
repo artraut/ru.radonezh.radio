@@ -101,92 +101,52 @@ document.addEventListener("offline", onOffline, false);
 var isPlaying = false;
 var networkError = false;
 
-getData();
+function onOnline() {
 
-var streamURL = localStorage.getItem("bitrate");
-var audio = new Audio(streamURL);
+    getData();
 
-$$('.r-play-button-play').show();
-$$('.r-play-button-pause').hide();
-$$('.r-play-button-loading').hide();
-$$('.r-block-progress-playback').hide();
-$$('.r-block-progress-loading').show();
+    var streamURL = localStorage.getItem("bitrate");
+    app.dialog.alert('в сети');
+    var audio = new Audio(streamURL);
 
-audio.onplaying = function () {
-    $$('.r-play-button-play').hide();
-    $$('.r-play-button-pause').show();
-    $$('.r-play-button-loading').hide();
-    $$('.r-block-progress-playback').show();
-    $$('.r-block-progress-loading').hide();
-    isPlaying = true;
-}
-
-audio.onpause = function () {
     $$('.r-play-button-play').show();
     $$('.r-play-button-pause').hide();
     $$('.r-play-button-loading').hide();
     $$('.r-block-progress-playback').hide();
     $$('.r-block-progress-loading').show();
-}
 
-audio.onwaiting = function () {
-    $$('.r-play-button-play').hide();
-    $$('.r-play-button-pause').hide();
-    $$('.r-play-button-loading').show();
-    $$('.r-block-progress-playback').hide();
-    $$('.r-block-progress-loading').show();
-}
+    audio.onplaying = function () {
+        $$('.r-play-button-play').hide();
+        $$('.r-play-button-pause').show();
+        $$('.r-play-button-loading').hide();
+        $$('.r-block-progress-playback').show();
+        $$('.r-block-progress-loading').hide();
+        isPlaying = true;
+    }
 
-$$('.r-play-button-play').click( function () {
-    audio.pause();
-    audio.play();
-});
+    audio.onpause = function () {
+        $$('.r-play-button-play').show();
+        $$('.r-play-button-pause').hide();
+        $$('.r-play-button-loading').hide();
+        $$('.r-block-progress-playback').hide();
+        $$('.r-block-progress-loading').show();
+    }
 
-$$('.r-play-button-pause').click( function () {
-    audio.pause();
-});
+    audio.onwaiting = function () {
+        $$('.r-play-button-play').hide();
+        $$('.r-play-button-pause').hide();
+        $$('.r-play-button-loading').show();
+        $$('.r-block-progress-playback').hide();
+        $$('.r-block-progress-loading').show();
+    }
 
-function onOnline() {
+    $$('.r-play-button-play').click( function () {
+        audio.play();
+    });
 
-    // $$('.r-play-button-play').show();
-    // $$('.r-play-button-pause').hide();
-    // $$('.r-play-button-loading').hide();
-    // $$('.r-block-progress-playback').hide();
-    // $$('.r-block-progress-loading').show();
-    //
-    // audio.onplaying = function () {
-    //     $$('.r-play-button-play').hide();
-    //     $$('.r-play-button-pause').show();
-    //     $$('.r-play-button-loading').hide();
-    //     $$('.r-block-progress-playback').show();
-    //     $$('.r-block-progress-loading').hide();
-    //     isPlaying = true;
-    // }
-    //
-    // audio.onpause = function () {
-    //     $$('.r-play-button-play').show();
-    //     $$('.r-play-button-pause').hide();
-    //     $$('.r-play-button-loading').hide();
-    //     $$('.r-block-progress-playback').hide();
-    //     $$('.r-block-progress-loading').show();
-    // }
-    //
-    // audio.onwaiting = function () {
-    //     $$('.r-play-button-play').hide();
-    //     $$('.r-play-button-pause').hide();
-    //     $$('.r-play-button-loading').show();
-    //     $$('.r-block-progress-playback').hide();
-    //     $$('.r-block-progress-loading').show();
-    // }
-    //
-    // $$('.r-play-button-play').click( function () {
-    //     audio.pause();
-    //     audio.play();
-    // });
-    //
-    // $$('.r-play-button-pause').click( function () {
-    //     audio.pause();
-    // });
+    $$('.r-play-button-pause').click( function () {
+        audio.pause();
+    });
 
 
 
