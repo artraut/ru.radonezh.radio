@@ -149,6 +149,7 @@ function onOnline() {
     }
 
     audio.onended = function () {
+        audio.pause();
         $$('.r-play-button-play').show();
         $$('.r-play-button-pause').hide();
         $$('.r-play-button-loading').hide();
