@@ -6,13 +6,9 @@ var secret = "-FQ1I7T3GGv62KdYc";
 
 
 var getBitrate = localStorage.getItem("bitrate");
-var isPlaying = localStorage.getItem("isPlaying");
 
 if (getBitrate === null) {
     localStorage.setItem("bitrate", "http://icecast.radonezh.cdnvideo.ru:8000/rad128");
-}
-if (isPlaying === null) {
-    localStorage.setItem("isPlaying", "n");
 }
 
 var $$ = Dom7;
@@ -55,7 +51,7 @@ var app = new Framework7({
                     });
                     $$('[name="bitrate"]').on("change", function () {
                         localStorage.setItem("bitrate", this.value);
-                        init();
+                        location.reload();
                     });
                 },
                 pageInit: function (e, page) {
@@ -99,6 +95,7 @@ var getData = function () {
 document.addEventListener("online", onOnline, false);
 document.addEventListener("offline", onOffline, false);
 
+var isPlaying = false;
 var networkError = false;
 var audio;
 
@@ -110,12 +107,12 @@ function onOnline() {
 
     audio.onplaying = function () {
         playView();
-        localStorage.setItem("isPlaying", "y");
+        isPlaying = true;
     }
 
     audio.onpause = function () {
         pauseView();
-        localStorage.setItem("isPlaying", "n");
+        isPlaying = false;
     }
 
     audio.onwaiting = function () {
@@ -130,7 +127,7 @@ function onOnline() {
         audio.pause();
     });
 
-    if (networkError === true && localStorage.getItem("isPlaying") == "n") {
+    if (networkError == true && isPlaying == true) {
         audio.play();
         networkError = false;
     }
@@ -167,9 +164,10 @@ function loadingView() {
 }
 
 function init() {
-    var isPlaying = localStorage.getItem("isPlaying");
+
     var streamURL = localStorage.getItem("bitrate");
-    if (isPlaying == "n") {
+
+    if (isPlaying == false) {
         pauseView();
         audio = new Audio(streamURL);
     } else {
