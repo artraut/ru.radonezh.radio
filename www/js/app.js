@@ -101,13 +101,13 @@ document.addEventListener("offline", onOffline, false);
 var isPlaying = false;
 var networkError = false;
 
+getData();
+
+var streamURL = localStorage.getItem("bitrate");
+var audio = new Audio(streamURL);
+
 function onOnline() {
-    
-    getData();
-    
-    var streamURL = localStorage.getItem("bitrate");
-    var audio = new Audio(streamURL);
-    
+
     $$('.r-play-button-play').show();
     $$('.r-play-button-pause').hide();
     $$('.r-play-button-loading').hide();
@@ -129,7 +129,6 @@ function onOnline() {
         $$('.r-play-button-loading').hide();
         $$('.r-block-progress-playback').hide();
         $$('.r-block-progress-loading').show();
-        reloadAudio();
     }
 
     audio.onwaiting = function () {
@@ -174,11 +173,6 @@ function onOffline() {
     $$('.r-block-progress-playback').hide();
     $$('.r-block-progress-loading').show();
     app.dialog.alert('Проверьте подключение к сети');
-}
-
-function reloadAudio() {
-    var streamURL = localStorage.getItem("bitrate");
-    audio = new Audio(streamURL);
 }
 
 
