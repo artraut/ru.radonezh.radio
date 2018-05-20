@@ -9,6 +9,7 @@
         <preference name="Orientation" value="portrait" />
         <preference name="Fullscreen" value="false" />
         <preference name="target-device" value="handset" />
+        <preference name="phonegap-version" value="cli-7.1.0" />
 
         <platform name="ios">
             <icon src="www/res/icon/ios/Icon-16.png" width="16" height="16" />
