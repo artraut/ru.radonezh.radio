@@ -195,7 +195,7 @@ $$('#donate').on('click', function(){
     if (parseInt(product_price) > 0) {
         var sign = md5(product_id + "-" + product_price + secret);
         var donateUrl = host + "?product_id=" + product_id + "&product_price=" + product_price + "&sign=" + sign;
-        window.open(donateUrl, '_blank')
+        window.open(donateUrl, '_system')
     } else {
         keypad.open();
     }
