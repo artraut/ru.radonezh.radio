@@ -200,3 +200,16 @@ $$('#donate').on('click', function(){
         keypad.open();
     }
 });
+
+document.addEventListener('yandexAppMetrica', onDeviceReady, false);
+function yandexAppMetrica () {
+    var configuration = {
+        // Mandatory
+        apiKey: 'fb667c24-b282-42b7-a321-5723b7dbf637',
+        // Optional
+        trackLocationEnabled: true,
+        handleFirstActivationAsUpdateEnabled: true,
+        sessionTimeout: 15
+    }
+    window.appMetrica.activate(configuration);
+}
