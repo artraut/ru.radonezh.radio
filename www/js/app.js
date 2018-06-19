@@ -213,4 +213,5 @@ function onDeviceReady () {
     }
     window.appMetrica.activate(configuration);
     window.appMetrica.reportEvent('Test event', { 'foo': 'bar' });
+    app.dialog.alert('Функция сработала');
 }
