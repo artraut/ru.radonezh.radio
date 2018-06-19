@@ -4,16 +4,6 @@ var host = "https://payments.chronopay.ru/";
 var product_id = "006009-0001-0001";
 var secret = "-FQ1I7T3GGv62KdYc";
 
-// App Metrica
-var AppMetrica = window.appMetrica.activate({
-    // Mandatory
-    apiKey: 'fb667c24-b282-42b7-a321-5723b7dbf637',
-    // Optional
-    trackLocationEnabled: true,
-    handleFirstActivationAsUpdateEnabled: true,
-    sessionTimeout: 15
-});
-
 var getBitrate = localStorage.getItem("bitrate");
 
 if (getBitrate === null) {
@@ -209,3 +199,18 @@ $$('#donate').on('click', function(){
         keypad.open();
     }
 });
+
+// App Metrica
+document.addEventListener('deviceready', onDeviceReady, false);
+function onDeviceReady () {
+    var configuration = {
+        // Mandatory
+        apiKey: 'fb667c24-b282-42b7-a321-5723b7dbf637',
+        // Optional
+        trackLocationEnabled: true,
+        handleFirstActivationAsUpdateEnabled: true,
+        sessionTimeout: 15
+    }
+    window.appMetrica.activate(configuration);
+    window.appMetrica.reportEvent('Test event', { 'foo': 'bar' });
+}
