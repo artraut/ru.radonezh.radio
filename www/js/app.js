@@ -212,6 +212,4 @@ function onDeviceReady () {
         sessionTimeout: 15
     }
     window.appMetrica.activate(configuration);
-    window.appMetrica.reportEvent('Test event', { 'foo': 'bar' });
-    app.dialog.alert('Функция сработала');
 }
