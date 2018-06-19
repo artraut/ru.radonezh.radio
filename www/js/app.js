@@ -3,7 +3,7 @@ var update = 60000;
 var host = "https://payments.chronopay.ru/";
 var product_id = "006009-0001-0001";
 var secret = "-FQ1I7T3GGv62KdYc";
-
+var yandexAppMetricaKey = "fb667c24-b282-42b7-a321-5723b7dbf637";
 
 var getBitrate = localStorage.getItem("bitrate");
 
@@ -201,15 +201,13 @@ $$('#donate').on('click', function(){
     }
 });
 
-document.addEventListener('yandexAppMetrica', onDeviceReady, false);
-function yandexAppMetrica () {
-    var configuration = {
-        // Mandatory
-        apiKey: 'fb667c24-b282-42b7-a321-5723b7dbf637',
-        // Optional
-        trackLocationEnabled: true,
-        handleFirstActivationAsUpdateEnabled: true,
-        sessionTimeout: 15
-    }
-    window.appMetrica.activate(configuration);
+// App Metrica
+var configuration = {
+    // Mandatory
+    apiKey: yandexAppMetricaKey,
+    // Optional
+    trackLocationEnabled: true,
+    handleFirstActivationAsUpdateEnabled: true,
+    sessionTimeout: 15
 }
+app.appMetrica.activate(configuration);
