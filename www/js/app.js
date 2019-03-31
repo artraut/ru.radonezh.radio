@@ -26,13 +26,13 @@ var app = new Framework7({
     id: 'ru.radonezh.radio',
     // Enable swipe panel
     panel: {
-        swipe: 'left',
+        swipe: 'left'
     },
     routes: [
         {
             name: 'about',
             path: '/about/',
-            url: './pages/about.html',
+            url: './pages/about.html'
         },
         {
             name: 'settings',
@@ -55,9 +55,9 @@ var app = new Framework7({
                 },
                 pageInit: function (e, page) {
                     // do something when page initialized
-                },
+                }
             }
-        },
+        }
     ]
 });
   
@@ -88,7 +88,7 @@ var getData = function () {
             }, update);
         }
     });
-}
+};
 
 // Stream Player
 document.addEventListener("online", onOnline, false);
@@ -107,16 +107,16 @@ function onOnline() {
     audio.onplaying = function () {
         playView();
         isPlaying = true;
-    }
+    };
 
     audio.onpause = function () {
         pauseView();
         isPlaying = false;
-    }
+    };
 
     audio.onwaiting = function () {
         loadingView();
-    }
+    };
 
     $$('.r-play-button-play').click( function () {
         audio.play();
@@ -126,7 +126,7 @@ function onOnline() {
         audio.pause();
     });
 
-    if (networkError == true && isPlaying == true) {
+    if (networkError === true && isPlaying === true) {
         audio.play();
         networkError = false;
     }
@@ -166,7 +166,7 @@ function init() {
 
     var streamURL = localStorage.getItem("bitrate");
 
-    if (isPlaying == false) {
+    if (isPlaying === false) {
         pauseView();
         audio = new Audio(streamURL);
     } else {
@@ -210,6 +210,6 @@ function onDeviceReady () {
         trackLocationEnabled: true,
         handleFirstActivationAsUpdateEnabled: true,
         sessionTimeout: 15
-    }
+    };
     window.appMetrica.activate(configuration);
 }
