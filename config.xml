@@ -60,6 +60,8 @@
             <!-- Retina iPad -->
             <splash src="www/res/screen/ios/Default-Portrait@2x.png" width="1536" height="2048" />
         </platform>
+        
+        <platform name="android" />
 
         <name>
             Радио «Радонеж»
