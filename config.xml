@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "ru.radonezh"
-        version     = "2.0.5" >
+        id          = "ru.radonezh.radio"
+        version     = "2.3.0" >
 
         <preference name="DisallowOverscroll" value="true" />
         <preference name="AutoHideSplashScreen" value="false" />
@@ -11,54 +11,13 @@
         <preference name="target-device" value="handset" />
         <preference name="phonegap-version" value="cli-7.1.0" />
 
-        <platform name="ios">
-            <icon src="www/res/icon/ios/Icon-16.png" width="16" height="16" />
-            <icon src="www/res/icon/ios/Icon-20.png" width="20" height="20" />
-            <icon src="www/res/icon/ios/Icon-29.png" width="29" height="29" />
-            <icon src="www/res/icon/ios/Icon-32.png" width="32" height="32" />
-            <icon src="www/res/icon/ios/Icon-40.png" width="40" height="40" />
-            <icon src="www/res/icon/ios/Icon-48.png" width="48" height="48" />
-            <icon src="www/res/icon/ios/Icon-50.png" width="50" height="50" />
-            <icon src="www/res/icon/ios/Icon-55.png" width="55" height="55" />
-            <icon src="www/res/icon/ios/Icon-57.png" width="57" height="57" />
-            <icon src="www/res/icon/ios/Icon-58.png" width="58" height="58" />
-            <icon src="www/res/icon/ios/Icon-60.png" width="60" height="60" />
-            <icon src="www/res/icon/ios/Icon-64.png" width="64" height="64" />
-            <icon src="www/res/icon/ios/Icon-72.png" width="72" height="72" />
-            <icon src="www/res/icon/ios/Icon-76.png" width="76" height="76" />
-            <icon src="www/res/icon/ios/Icon-80.png" width="80" height="80" />
-            <icon src="www/res/icon/ios/Icon-87.png" width="87" height="87" />
-            <icon src="www/res/icon/ios/Icon-88.png" width="88" height="88" />
-            <icon src="www/res/icon/ios/Icon-100.png" width="100" height="100" />
-            <icon src="www/res/icon/ios/Icon-114.png" width="114" height="114" />
-            <icon src="www/res/icon/ios/Icon-120.png" width="120" height="120" />
-            <icon src="www/res/icon/ios/Icon-128.png" width="128" height="128" />
-            <icon src="www/res/icon/ios/Icon-144.png" width="144" height="144" />
-            <icon src="www/res/icon/ios/Icon-152.png" width="152" height="152" />
-            <icon src="www/res/icon/ios/Icon-167.png" width="167" height="167" />
-            <icon src="www/res/icon/ios/Icon-172.png" width="172" height="172" />
-            <icon src="www/res/icon/ios/Icon-180.png" width="180" height="180" />
-            <icon src="www/res/icon/ios/Icon-196.png" width="196" height="196" />
-            <icon src="www/res/icon/ios/Icon-256.png" width="256" height="256" />
-            <icon src="www/res/icon/ios/Icon-512.png" width="512" height="512" />
-            <icon src="www/res/icon/ios/Icon-1024.png" width="1024" height="1024" />
-
-            <!-- iPhone and iPod touch -->
-            <splash src="www/res/screen/ios/Default.png" width="320" height="480" />
-            <splash src="www/res/screen/ios/Default@2x.png" width="640" height="960" />
-
-            <!-- iPhone 5 / iPod Touch (5th Generation) -->
-            <splash src="www/res/screen/ios/Default-568h@2x.png" width="640" height="1136" />
-
-            <!-- iPhone 6 -->
-            <splash src="www/res/screen/ios/Default-667h@2x.png" width="750" height="1334" />
-            <splash src="www/res/screen/ios/Default-Portrait-736h@3x.png" width="1242" height="2208" />
-
-            <!-- iPad -->
-            <splash src="www/res/screen/ios/Default-Portrait.png" width="768" height="1024" />
-
-            <!-- Retina iPad -->
-            <splash src="www/res/screen/ios/Default-Portrait@2x.png" width="1536" height="2048" />
+        <platform name="android">
+            <icon src="www/res/icon/android/ldpi.png" platform="android" qualifier="ldpi" />
+            <icon src="www/res/icon/android/mdpi.png" platform="android" qualifier="mdpi" />
+            <icon src="www/res/icon/android/hdpi.png" platform="android" qualifier="hdpi" />
+            <icon src="www/res/icon/android/xhdpi.png" platform="android" qualifier="xhdpi" />
+            <icon src="www/res/icon/android/xxhdpi.png" platform="android" qualifier="xxhdpi" />
+            <icon src="www/res/icon/android/xxxhdpi.png" platform="android" qualifier="xxxhdpi" />
         </platform>
 
         <name>
