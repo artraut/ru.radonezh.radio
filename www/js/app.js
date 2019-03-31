@@ -23,7 +23,7 @@ var app = new Framework7({
     // App Name
     name: 'Радио «Радонеж»',
     // App id
-    id: 'ru.radonezh',
+    id: 'ru.radonezh.radio',
     // Enable swipe panel
     panel: {
         swipe: 'left',
