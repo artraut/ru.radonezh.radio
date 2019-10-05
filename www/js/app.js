@@ -1,4 +1,4 @@
-var dataURL = "https://pwa.radonezh.info/api/";
+var dataURL = "http://pwa.radonezh.info/api/";
 var update = 60000;
 var host = "https://payments.chronopay.ru/";
 var product_id = "006009-0001-0001";
@@ -188,12 +188,12 @@ function init() {
 
     if (isPlaying === false) {
         pauseView();
-        audio = new Audio(streamURL);
+        audio = new Media(streamURL);
     } else {
         audio.pause();
         audio.currentTime = 0;
         audio.src = null;
-        audio = new Audio(streamURL);
+        audio = new Media(streamURL);
         audio.play();
     }
 }
