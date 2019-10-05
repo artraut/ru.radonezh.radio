@@ -91,32 +91,13 @@ var getData = function () {
 };
 
 // Stream Player
+document.addEventListener("online", onOnline, false);
+document.addEventListener("offline", onOffline, false);
+
 var
     isPlaying = false,
     networkError = false,
     audio;
-
-window.addEventListener('load', function() {
-    // 1st, we set the correct status when the page loads
-    navigator.onLine ? throwStatus(true) : throwStatus(false);
-
-    // now we listen for network status changes
-    window.addEventListener('online', function() {
-        throwStatus(true);
-    });
-
-    window.addEventListener('offline', function() {
-        throwStatus(false);
-    });
-});
-
-function throwStatus(online) {
-    if (online) {
-        onOnline();
-    } else {
-        onOffline();
-    }
-}
 
 function onOnline() {
 
@@ -219,3 +200,17 @@ $$('#donate').on('click', function(){
         keypad.open();
     }
 });
+
+// App Metrica
+document.addEventListener('deviceready', onDeviceReady, false);
+function onDeviceReady () {
+    var configuration = {
+        // Mandatory
+        apiKey: 'fb667c24-b282-42b7-a321-5723b7dbf637',
+        // Optional
+        trackLocationEnabled: true,
+        handleFirstActivationAsUpdateEnabled: true,
+        sessionTimeout: 15
+    };
+    window.appMetrica.activate(configuration);
+}

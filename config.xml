@@ -37,6 +37,9 @@
         <access origin="*" />
 
         <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
-        <gap:plugin name="org.apache.cordova.media" />
+        <plugin spec="https://github.com/hutber/cordova-plugin-backgroundaudio.git" source="git" />
+        <plugin name="cordova-plugin-media" spec="~5.0.3" />
+        <plugin name="cordova-plugin-inappbrowser" spec="~3.1.0" />
+        <plugin name="cordova-plugin-network-information" spec="~2.0.2" />
 
 </widget>
